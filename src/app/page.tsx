@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const USE_EFFECT_ROUTE = "/useEffectExercises";
+export const USE_EFFECT_ROUTE = "/useEffectExercises";
 
 export default function App() {
   return (
