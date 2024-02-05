@@ -12,11 +12,13 @@ export default function Exercise2() {
 
   useEffect(() => {
     function handleMove(e: any) {
-      setPosition({ x: e.clientX, y: e.clientY });
+      if (canMove) { //Add validação
+        setPosition({ x: e.clientX, y: e.clientY });
+      }
     }
     window.addEventListener("pointermove", handleMove);
     return () => window.removeEventListener("pointermove", handleMove);
-  }, []);
+  }, [canMove]);
 
   return (
     <>
