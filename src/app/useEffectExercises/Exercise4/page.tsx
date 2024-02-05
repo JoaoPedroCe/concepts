@@ -28,12 +28,7 @@ export default function App() {
         Enable encryption
       </label>
       <hr />
-      <ChatRoom
-        roomId={roomId}
-        createConnection={
-          isEncrypted ? createEncryptedConnection : createUnencryptedConnection
-        }
-      />
+      <ChatRoom roomId={roomId} isEncrypted={isEncrypted} />
     </>
   );
 }
