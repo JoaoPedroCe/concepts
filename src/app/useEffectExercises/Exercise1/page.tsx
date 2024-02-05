@@ -1,4 +1,54 @@
 "use client";
-export default function Exercise1() {
-  <div>Exercicio 1</div>;
+
+import { useEffect, useState } from "react";
+
+export function createConnection(serverUrl: string, roomId: string) {
+  // A real implementation would actually connect to the server
+  return {
+    connect() {
+      console.log(
+        '✅ Connecting to "' + roomId + '" room at ' + serverUrl + "..."
+      );
+    },
+    disconnect() {
+      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+    },
+  };
+}
+
+const serverUrl = "https://localhost:1234";
+function ChatRoom({ roomId }: { roomId: string }) {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId]); //Add room ID como dependencia
+
+  return (
+    <>
+      <h1>Welcome to the {roomId} room!</h1>
+      <input value={message} onChange={(e) => setMessage(e.target.value)} />
+    </>
+  );
+}
+
+export default function App() {
+  const [roomId, setRoomId] = useState("general");
+  return (
+    <>
+      <label>
+        Choose the chat room:{" "}
+        <select value={roomId} onChange={(e) => setRoomId(e.target.value)}>
+          <option value="general">general</option>
+          <option value="travel">travel</option>
+          <option value="music">music</option>
+        </select>
+      </label>
+      <ChatRoom roomId={roomId} />
+    </>
+  );
 }
