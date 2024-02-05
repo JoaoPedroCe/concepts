@@ -16,6 +16,13 @@ export default function UseEffectExercises() {
           https://react.dev/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect
         </Link>
       </li>
+      <li>
+        <Link href={getRoute("/Exercise2")}>
+          Exercise2
+          <br />
+          https://react.dev/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect
+        </Link>
+      </li>
     </ul>
   );
 }
